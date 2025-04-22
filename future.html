@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stay with me - in this wonderland</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500&family=Orbitron:wght@400;700&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+
+
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: url('background.gif');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0px;
+        }
+ 
+.section-title {
+    display: block;
+    text-align: center;
+    font-size: 3vh;
+    margin-top: 10%;
+    font-family: 'Courier New', monospace;
+    color: #99fff1;
+    text-shadow: 
+        0 0 8px rgba(153, 255, 241, 0.7),
+        0 0 2px #fff;
+    border-bottom: 1px dashed #4bd1aa;
+    padding-bottom: 4px;
+    letter-spacing: 1px;
+    animation: blink 2s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.8; }
+}
+
+    .content-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start; /* Align items at the top */
+        width: 100%;
+        gap: 5%; /* Space between items */
+        margin-top: 0%; /* Adjust as needed */
+    }
+
+.image1 {
+     border-radius: 15px;
+     float:none;
+     margin-top: 9%;
+            width: 40%;
+            height: auto;
+	border:none;
+        outline: 1px solid #2bffdc; /* Your signature cyan-green color */
+        outline-offset: 5px;
+        animation: cyanPulse 3s infinite ease-in-out;
+    }
+
+.image2 {
+     border-radius: 15px;
+     float:none;
+     margin-top: 6.5%;
+            width: 100%;
+            height: auto;
+        border: 2.5px solid #4bd1aa; /* New mint-cyan border*/ 
+         box-shadow: 
+            0 0 10px rgba(75, 209, 170, 0.6),  /* Same 10px size as original */
+            0 0 20px rgba(60, 180, 150, 0.3);   /* Same 20px size as original */
+    }
+
+
+@keyframes cyanPulse {
+        0%, 100% {
+            box-shadow: 
+                0 0 8px rgba(43, 255, 220, 0.8),    /* Core glow */
+                0 0 16px rgba(30, 220, 180, 0.6),    /* Middle glow */
+                0 0 24px rgba(15, 180, 140, 0.4);    /* Outer glow */
+        }
+        50% {
+            box-shadow: 
+                0 0 12px rgba(63, 255, 240, 0.9),    /* Bright core */
+                0 0 24px rgba(45, 240, 200, 0.7),    /* Strong middle */
+                0 0 36px rgba(30, 210, 170, 0.5),    /* Wide outer */
+                0 0 4px rgba(180, 255, 240, 0.3);    /* Subtle highlight */
+        }
+    }
+
+
+    .text-container {
+        width: 55%; 
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .text1 {
+        border-radius: 15px;
+	font-size: 1.6vh;
+	margin-top:15%;
+	color:white;
+            padding: 1.5em;
+            font-family: 'Comfortaa', 'Quicksand', sans-serif;
+  	    line-height: 1.65;
+            font-weight: 500;
+        background-color: #0f2b2b ; 
+        border: 2.5px solid #4bd1aa; /* New mint-cyan border*/ 
+         box-shadow: 
+            0 0 10px rgba(75, 209, 170, 0.6),  /* Same 10px size as original */
+            0 0 20px rgba(60, 180, 150, 0.3);   /* Same 20px size as original */    
+}
+
+
+    @keyframes tealBubbleGlow {
+        0%, 100% {
+            box-shadow: 
+                0 0 8px rgba(43, 255, 220, 0.8),    /* Core glow */
+                0 0 16px rgba(30, 220, 180, 0.6),    /* Middle glow */
+                0 0 24px rgba(15, 180, 140, 0.4);    /* Outer glow */
+        }
+        50% {
+            box-shadow: 
+                0 0 12px rgba(63, 255, 240, 0.9),    /* Bright core */
+                0 0 24px rgba(45, 240, 200, 0.7),    /* Strong middle */
+                0 0 36px rgba(30, 210, 170, 0.5),    /* Wide outer */
+                0 0 4px rgba(180, 255, 240, 0.3);    /* Subtle highlight */
+        }
+    }
+
+
+    @media (max-width: 768px) {
+        .content-row, content-row2 {
+            flex-direction: column;
+        }
+        .image1, .text-container, .image2,.text-container2, .image3{
+            width: 100%;
+        }
+    }
+
+        .navigation-menu {
+            width: 100%;
+            margin-top: 13mm;
+        }
+
+        #navigation ul {
+	    font-size: 2.37vh;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: #00b092;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #navigation ul li {
+            position: relative;
+            margin: 0;
+        }
+
+        #navigation ul li a {
+            font-family: monospace;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        #navigation ul li a:hover {
+            background-color: #88e3d3;
+        }
+
+        #navigation li:not(:first-child)::before {
+            content: "|";
+            color: white;
+            position: absolute;
+            left: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none; /* Makes the pipe separator non-interactive */
+        }
+
+        .title {
+	    text-align:center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.3vh;
+            font-weight: 700;
+            letter-spacing: 2px;
+        color:#99fff1;
+        text-shadow:
+            0 0 8px rgba(43, 255, 220, 0.8),    /* Stronger core glow */
+            0 0 18px rgba(30, 220, 180, 0.6),    /* More visible mid-glow */
+            0 0 28px rgba(15, 180, 140, 0.4);    /* Enhanced outer glow */
+        animation: strongPulse 3s infinite ease-in-out;
+    }
+
+
+    @keyframes strongPulse {
+        0%, 100% {
+            text-shadow:
+                0 0 8px rgba(43, 255, 220, 0.8),
+                0 0 18px rgba(30, 220, 180, 0.6),
+                0 0 28px rgba(15, 180, 140, 0.4);
+        }
+        50% {
+            text-shadow:
+                0 0 15px rgba(63, 255, 240, 0.9),  /* Very bright core */
+                0 0 30px rgba(45, 240, 200, 0.7),   /* Strong mid-glow */
+                0 0 45px rgba(30, 210, 170, 0.5),   /* Visible outer */
+                0 0 60px rgba(15, 180, 140, 0.3);  /* Noticeable spread */
+        }
+    }
+
+    .content-row2 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start; /* Align items at the top */
+        width: 100%;
+        gap: 5%; /* Space between items */
+        margin-top: 0%; /* Adjust as needed */
+    }
+
+    .text-container2 {
+        width: 57%; 
+        display: flex;
+        flex-direction: column;
+    }
+
+.image3 {
+     border-radius: 5px;
+     float:none;
+     margin-top: 6.3%;
+            width: 37.5%;
+            height: auto;
+	border:none;
+        outline: 1px solid #2bffdc; /* Your signature cyan-green color */
+        outline-offset: 5px;
+        animation: cyanPulse 3s infinite ease-in-out;
+    }
+
+
+    .text2 {
+        border-radius: 15px;
+	font-size: 1.6vh;
+	margin-top:10%;
+	color:white;
+            padding: 1.5em;
+            font-family: 'Comfortaa', 'Quicksand', sans-serif;
+  	    line-height: 1.65;
+            font-weight: 500;
+        background-color: #0f2b2b ; 
+        border: 2.5px solid #4bd1aa; /* New mint-cyan border*/ 
+         box-shadow: 
+            0 0 10px rgba(75, 209, 170, 0.6),  /* Same 10px size as original */
+            0 0 20px rgba(60, 180, 150, 0.3);   /* Same 20px size as original */    
+}
+
+        
+        /* A4 container with responsive behavior */
+        .container {
+            width: 100%;
+            max-width: 230mm; 
+    height: 100%;
+    padding-bottom: 112.5%; /* Remove this */
+            position: relative;
+            background-color: black;
+        border: 13px double rgba(140, 255, 220, 0.6); /* Cyan-green border */
+        box-shadow: 
+            inset 0 0 15px rgba(120, 255, 210, 0.4),  /* Inner glow */
+            0 0 30px rgba(100, 255, 200, 0.5),       /* Middle glow */
+            0 0 15px rgba(80, 255, 180, 0.3);        /* Outer spread */
+        animation: greenPulse 3s infinite alternate ease-in-out;
+    }
+
+    @keyframes greenPulse {
+        50% {
+            box-shadow: 
+                inset 0 0 10px rgba(160, 255, 230, 0.6),  /* Brighter inner */
+                0 0 20px rgba(140, 255, 220, 0.7),       /* Stronger middle */
+                0 0 45px rgba(120, 255, 210, 0.4);       /* Wider outer */
+            border-color: rgba(180, 255, 240, 0.8);      /* Brightened border */
+        }
+    } 
+        /* Actual content area */
+        .content {
+	    background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20mm; /* Standard margins */
+            overflow: auto; /* For content that exceeds the page */
+        }
+        
+        /* Print-specific styles */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            
+            .container {
+                width: 230mm;
+                height: 258.75mm;
+                padding-bottom: 0;
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .content {
+                position: static;
+                padding: 0;
+            }
+        }
+
+.question-box {
+  letter-spacing: 1.5px;
+  border: 2px solid #00f2c9;
+  background-color: rgba(0, 255, 200, 0.05);
+  padding-top: 5%;
+  padding-bottom: 3%;
+
+  margin-top: 6.5%;
+  font-family: 'Orbitron', sans-serif;
+  color: #99fff1;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00f2c9;
+overflow: auto; 
+max-height:93mm;
+}
+
+.question-box button {
+  letter-spacing: 1.2px;
+  background-color: transparent;
+  color: #99fff1;
+  border: 2px solid #00f2c9;
+  padding: 10px 15px;
+  margin-top:4%;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.question-box button:hover {
+  background-color: rgba(0, 255, 200, 0.1);
+  transform: scale(1.05);
+}
+
+.feedback {
+  margin-top: 4%;
+  font-size: 2vh;
+  margin-right: 10%;
+  margin-left: 10%;
+  transition: all 0.4s ease-in-out;
+  
+}
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+		<div class = "title">
+			<h1>Penguin's Wonderland</h1>
+		</div>
+
+		<div class="navigation-menu">
+			<div id ="navigation">
+				<ul>
+  					<li><a href="index.html">Home</a></li>
+  					<li><a href="blog.html">Blog</a></li>
+ 	        			<li><a href="space.html">Space & Beyond</a></li>
+  					<li><a href="future.html">Future Vision</a></li>
+  					<li><a href="AI.html">Tech & AI</a></li> 
+				</ul>
+			</div>
+		</div>
+
+    <div class="content-row">
+		<img src="building2.jpg" alt="building.jpg" class="image1">
+
+		<div class="text-container">
+            		<div class="text1">
+                		<p>✨ What lies ahead? No one truly knows — but imagining the future is one of the most beautiful things we can do. It's a dance between data and dreams, where innovation guides our steps and curiosity lights the way. Through exploring possibilities, we shape not just what may come, but who we become.</p>
+            		</div>
+	   	<img src="future3.jpg" alt="future.jpg" class="image2">
+
+
+		</div>
+        </div>
+
+    <div class="section-title">
+	   <p>Environmental Concern...</p>
+    </div>
+
+    <div class="content-row2">
+		<div class="text-container2">
+            		<div class="text2">
+                		<p>🌍 The future shimmers with promise — but every step forward casts a longer shadow. Rising temperatures parch the earth, plastics choke the seas, and silent forests mark the cost of our haste. <br>🌿 Yet within this warning lies a call to reinvent: to weave sustainability into innovation’s fabric, where clean energy hums and circular economies thrive. The path isn’t written; it’s shaped by choices we make today. Will we be the generation that healed, or the echo of what was lost? The answer flickers in the balance between action and apathy.</br></p>
+            		</div>
+
+		</div>
+	   	<img src="environment.jpg" alt="environment.jpg" class="image3">
+        </div>
+	
+	
+<div class="question-box">
+  <p class="question">🧠 What’s the proper way to reduce environmental harm? </p>
+  <button onclick="checkAnswer(this, false)">Use more single-use plastics</button>
+  <br><button onclick="checkAnswer(this, true)">Reduce, reuse, and recycle</button></br>
+  <button onclick="checkAnswer(this, false)">Cut down forests to build cities
+</button>
+
+  <p id="feedback" class="feedback"></p>
+</div>
+
+    </div>
+</div>
+
+<script>
+  function checkAnswer(button, isCorrect) {
+    const feedback = document.getElementById("feedback");
+
+    if (isCorrect) {
+      feedback.innerHTML = "🎉 Congratulations! That’s correct!";
+      feedback.style.color = "#00ffbf";
+    } else {
+      feedback.innerHTML = "Oops! The correct answer is: <br><strong>Reduce, reuse, and recycle</strong><br> It helps to conserve resources, lower pollution, and minimize waste, which is one of the simplest and most effective habits for protecting our planet.";
+      feedback.style.color = "#ff6a6a";
+    }
+
+    // Disable all buttons
+    const buttons = button.parentElement.querySelectorAll("button");
+    buttons.forEach(btn => btn.disabled = true);
+
+
+  }
+</script>
+
+</body>
+</html>

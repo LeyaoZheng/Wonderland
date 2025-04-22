@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stay with me - in this wonderland</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500&family=Orbitron:wght@400;700&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: url('background.gif');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0px;
+        }
+
+        body.locked {
+   	    overflow: hidden;
+	}
+
+        .locked body {
+            overflow: hidden;
+        }
+
+        .navigation-menu {
+            width: 100%;
+            margin-top: 13mm;
+        }
+
+        #navigation ul {
+            font-size: 2.37vh;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: #ed8c1c;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #navigation ul li {
+            position: relative;
+            margin: 0;
+        }
+
+        #navigation ul li a {
+            font-family: monospace;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        #navigation ul li a:hover {
+            background-color:#faca46;
+        }
+
+        #navigation li:not(:first-child)::before {
+            content: "|";
+            color: white;
+            position: absolute;
+            left: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .title {
+            text-align:center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.3vh;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color:#facd6b;
+            text-shadow:
+                0 0 8px rgba(255, 165, 0, 0.8),
+                0 0 18px rgba(255, 140, 0, 0.6),
+                0 0 28px rgba(255, 100, 0, 0.4);
+            animation: strongPulse 3s infinite ease-in-out;
+            margin-bottom: 10px;
+        }
+
+        @keyframes strongPulse {
+            0%, 100% {
+                text-shadow:
+                    0 0 8px rgba(255, 165, 0, 0.8),
+                    0 0 18px rgba(255, 140, 0, 0.6),
+                    0 0 28px rgba(255, 100, 0, 0.4);
+            }
+            50% {
+                text-shadow:
+                    0 0 15px rgba(255, 180, 50, 0.9),
+                    0 0 30px rgba(255, 150, 30, 0.7),
+                    0 0 45px rgba(255, 120, 20, 0.5),
+                    0 0 60px rgba(255, 80, 0, 0.3);
+            }
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 230mm;
+            height: 100%;
+            padding-bottom: 110%;
+            position: relative;
+            background-color: black;
+            border: 13px double rgba(255, 160, 50, 0.7);
+            box-shadow: 
+                0 0 12px rgba(255, 140, 40, 0.5),
+                0 0 25px rgba(255, 110, 20, 0.4),
+                inset 0 0 12px rgba(255, 180, 70, 0.4);
+            animation: amberOrangeBorderGlow 3s infinite alternate;
+        }
+
+        @keyframes amberOrangeBorderGlow {
+            0%, 100% {
+                border-color: rgba(255, 160, 50, 0.7);
+                box-shadow: 
+                    0 0 12px rgba(255, 140, 40, 0.5),
+                    0 0 25px rgba(255, 110, 20, 0.4),
+                    inset 0 0 12px rgba(255, 180, 70, 0.4);
+            }
+            50% {
+                border-color: rgba(255, 190, 80, 0.9);
+                box-shadow: 
+                    0 0 20px rgba(255, 170, 60, 0.6),
+                    0 0 40px rgba(255, 130, 30, 0.5),
+                    inset 0 0 20px rgba(255, 200, 90, 0.5);
+            }
+        }
+  
+        .content {
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20mm;
+            overflow: auto;
+        }
+
+        /* Enhanced Password Section */
+        .password-section {
+            width: 100%;
+            padding: 30px 0;
+            background: linear-gradient(135deg, rgba(26, 9, 51, 0.9) 0%, rgba(40, 15, 80, 0.9) 100%);
+            margin: 50px 0;
+            border-radius: 8px;
+            box-shadow: 
+                0 0 15px rgba(255, 180, 70, 0.4),
+                inset 0 0 10px rgba(255, 200, 100, 0.3);
+            border: 1px solid rgba(255, 180, 70, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .password-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.8) 50%, 
+                transparent 100%);
+            animation: scanline 3s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .password-container {
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .password-container h2 {
+            color: #facd6b;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 25px;
+            font-size: 2.4vh;
+            text-shadow: 0 0 8px rgba(255, 165, 0, 0.6);
+            letter-spacing: 1px;
+        }
+
+        .password-input-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        #password-input {
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 180, 70, 0.7);
+            background-color: rgba(10, 5, 25, 0.8);
+            color: white;
+            font-family: 'Comfortaa';
+            width: 100%;
+            max-width: 300px;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(255, 180, 70, 0.2);
+        }
+
+        #password-input:focus {
+            outline: none;
+            border-color: #faca46;
+            box-shadow: 0 0 15px rgba(255, 200, 100, 0.4);
+        }
+
+        #unlock-btn {
+            padding: 12px 30px;
+            border: none;
+            background: linear-gradient(to right, #ed8c1c, #faca46);
+            color: white;
+            font-family: 'Orbitron';
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(237, 140, 28, 0.4);
+        }
+
+        #unlock-btn:hover {
+            background: linear-gradient(to right, #faca46, #ed8c1c);
+            box-shadow: 0 0 20px rgba(250, 202, 70, 0.6);
+            transform: translateY(-2px);
+        }
+
+        #error-message {
+            color: #ff6666;
+            font-family: 'Comfortaa';
+            margin-top: 15px;
+            font-size: 14px;
+            min-height: 20px;
+        }
+
+        .protected-content {
+            display: none;
+            padding-top: 20px;
+            color: white;
+        }
+
+        /* Glowing white line that blocks scrolling */
+        .content-lock {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.9) 50%, 
+                transparent 100%);
+            box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.7);
+            z-index: 1000;
+            display: none;
+            animation: glowPulse 2s infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            
+            .container {
+                width: 230mm;
+                height: 253mm;
+                padding-bottom: 0;
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .content {
+                position:static;
+                padding: 0;
+            }
+	}
+
+    .content-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start; /* Align items at the top */
+        width: 100%;
+        gap: 5%; /* Space between items */
+        margin-top: 0%; /* Adjust as needed */
+    }
+
+    .text-container {
+        width: 40%; 
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media (max-width: 768px) {
+        .content-row {
+            flex-direction: column;
+        }
+        .image1, .text-container {
+            width: 100%;
+	    height:100%;
+        }
+    }
+
+    .image1 {
+        margin-top: 7%;
+        width: 49.3%;
+        height: auto;
+        border: none;
+        outline: 2px solid #FF8C42; /* Warm orange border */
+        outline-offset: 5px;
+        border-radius: 15px;
+        box-shadow:
+            0 0 10px rgba(255, 140, 66, 0.7),  /* Core glow */
+            0 0 20px rgba(255, 110, 30, 0.5),  /* Medium glow */
+            0 0 30px rgba(255, 80, 0, 0.3);    /* Outer glow */
+        animation: orangeGlowPulse 3s infinite ease-in-out;
+    }
+
+    .text1 {
+        margin-top: 15.9%;
+	margin-right: -9%;
+        color: white;
+        font-size: 1.81vh;
+        padding: 1.65em;
+        font-family: 'Comfortaa', 'Quicksand', sans-serif;
+        line-height: 1.65;
+        font-weight: 500;
+        background-color: #261304; /* Deep orange-brown background */
+        border-radius: 15px;
+    border: 2px solid rgba(255, 163, 67, 0.7); /* More transparent border */
+    box-shadow: 
+        0 0 6px rgba(255, 163, 67, 0.5),    /* Reduced glow */
+        0 0 12px rgba(255, 140, 40, 0.3),    /* Smaller spread */
+        0 0 18px rgba(255, 100, 20, 0.1);    /* Very subtle outer */
+    animation: subtleOrangePulse 3s ease-in-out infinite alternate;
+}
+
+    .content-row2 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start; /* Align items at the top */
+        width: 100%;
+        gap: 5%; /* Space between items */
+        margin-top: 0%; /* Adjust as needed */
+    }
+
+    .text-container2 {
+        width: 40%; 
+        display: flex;
+        flex-direction: column;
+    }
+
+    .image2 {
+        margin-top: 10%;
+        width: 49.3%;
+        height: auto;
+        border: none;
+        outline: 2px solid #FF8C42; /* Warm orange border */
+        outline-offset: 5px;
+        border-radius: 15px;
+        box-shadow:
+            0 0 10px rgba(255, 140, 66, 0.7),  /* Core glow */
+            0 0 20px rgba(255, 110, 30, 0.5),  /* Medium glow */
+            0 0 30px rgba(255, 80, 0, 0.3);    /* Outer glow */
+        animation: orangeGlowPulse 3s infinite ease-in-out;
+    }
+
+    .text2 {
+        margin-top: 23.5%;
+	margin-left: -9%;
+        color: white;
+        font-size: 1.81vh;
+        padding: 1.65em;
+        font-family: 'Comfortaa', 'Quicksand', sans-serif;
+        line-height: 1.65;
+        font-weight: 500;
+        background-color: #261304; /* Deep orange-brown background */
+        border-radius: 15px;
+    border: 2px solid rgba(255, 163, 67, 0.7); /* More transparent border */
+    box-shadow: 
+        0 0 6px rgba(255, 163, 67, 0.5),    /* Reduced glow */
+        0 0 12px rgba(255, 140, 40, 0.3),    /* Smaller spread */
+        0 0 18px rgba(255, 100, 20, 0.1);    /* Very subtle outer */
+    animation: subtleOrangePulse 3s ease-in-out infinite alternate;
+}
+
+    @media (max-width: 768px) {
+        .content-row2 {
+            flex-direction: column;
+        }
+        .image2, .text-container2 {
+            width: 100%;
+	    height:100%;
+        }
+    }
+
+
+    @keyframes orangeGlowPulse {
+        0%, 100% {
+            outline-color: #FF8C42;
+            box-shadow:
+                0 0 10px rgba(255, 140, 66, 0.7),
+                0 0 20px rgba(255, 110, 30, 0.5),
+                0 0 30px rgba(255, 80, 0, 0.3);
+        }
+        50% {
+            outline-color: #FFA343;
+            box-shadow:
+                0 0 15px rgba(255, 163, 67, 0.9),
+                0 0 30px rgba(255, 130, 40, 0.6),
+                0 0 45px rgba(255, 90, 20, 0.4);
+        }
+    }
+
+@keyframes subtleOrangePulse {
+    0%, 100% {
+        border-color: rgba(255, 163, 67, 0.7);
+        box-shadow:
+            0 0 5px rgba(255, 163, 67, 0.5),
+            0 0 15px rgba(255, 140, 40, 0.3),
+            0 0 25px rgba(255, 100, 20, 0.1);
+    }
+    50% {
+        border-color: rgba(255, 184, 101, 0.8);
+        box-shadow:
+            0 0 10px rgba(255, 184, 101, 0.6),
+            0 0 20px rgba(255, 150, 60, 0.4),
+            0 0 30px rgba(255, 120, 30, 0.2);
+    }
+}
+
+.emoji-feedback {
+  margin-top: 10%;
+  padding: 15px;
+  background-color: rgba(255, 229, 180, 0.1);
+  border: 2px dashed #facd6b;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Comfortaa', sans-serif;
+  color: white;
+}
+
+.emoji-question {
+  padding-top:25px;
+  font-size: 1.7vh;
+  margin-bottom: 10px;
+}
+
+.emoji-buttons button {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.emoji-buttons button:hover {
+  transform: scale(1.3);
+}
+
+.emoji-response {
+  margin-top: 10px;
+  font-size: 1.5vh;
+  color: #ffd187;
+}
+
+    .subtitle {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.5vh;
+        font-weight: 700;
+        color: #FFD187;
+        text-align: center;
+	margin-top: 8%;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        position: relative;
+        text-shadow: 
+            0 0 8px rgba(255, 209, 135, 0.8),
+            0 0 15px rgba(255, 166, 0, 0.6),
+            0 0 25px rgba(255, 100, 0, 0.3);
+        animation: subtitleGlow 1.8s infinite alternate ease-in-out;
+        padding: 15px 0;
+    }
+
+    .subtitle::before,
+    .subtitle::after {
+        content: '✧';
+        position: absolute;
+        color: #FFA343;
+        font-size: 1.8rem;
+        top: 50%;
+        transform: translateY(-50%);
+        animation: sparkle 2s infinite;
+    }
+
+    .subtitle::before {
+        left: 10%;
+    }
+
+    .subtitle::after {
+        right: 10%;
+    }
+
+    .subtitle::before {
+        content: '✦';
+        left: 0%;
+        text-shadow: 0 0 10px #FF8C42;
+    }
+
+    .subtitle::after {
+        content: '✦';
+        right: 0%;
+        text-shadow: 0 0 10px #FF8C42;
+    }
+
+    .subtitle-underline {
+        position: absolute;
+        bottom: 0;
+        left: 20%;
+        width: 60%;
+        height: 2px;
+        background: linear-gradient(90deg, 
+            transparent, 
+            #FF8C42, 
+            #FFD187, 
+            #FF8C42, 
+            transparent);
+        box-shadow: 
+            0 0 10px #FFA343,
+            0 0 20px rgba(255, 140, 66, 0.5);
+        animation: linePulse 3s infinite;
+    }
+
+    @keyframes subtitleGlow {
+        0% {
+            text-shadow: 
+                0 0 8px rgba(255, 209, 135, 0.8),
+                0 0 15px rgba(255, 166, 0, 0.6),
+                0 0 25px rgba(255, 100, 0, 0.3);
+        }
+        100% {
+            text-shadow: 
+                0 0 12px rgba(255, 230, 150, 1),
+                0 0 25px rgba(255, 190, 80, 0.8),
+                0 0 40px rgba(255, 120, 30, 0.5);
+            letter-spacing: 4px;
+        }
+    }
+
+    @keyframes sparkle {
+        0%, 100% {
+            opacity: 0.8;
+            transform: translateY(-50%) scale(1);
+        }
+        50% {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.3) rotate(15deg);
+            text-shadow: 0 0 15px #FFD700;
+        }
+    }
+
+    @keyframes linePulse {
+        0%, 100% {
+            opacity: 0.9;
+            background-size: 100% 100%;
+        }
+        50% {
+            opacity: 1;
+            background-size: 150% 100%;
+        }
+    }
+
+        
+    </style>
+
+</head>
+<body class="locked">
+    <div class="content-lock" id="content-lock"></div>
+    
+    <div class="container">
+        <div class="content">
+            <div class="title">
+                <h1>Penguin's Wonderland</h1>
+            </div>
+            
+            <div class="navigation-menu">
+                <div id="navigation">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="space.html">Space & Beyond</a></li>
+                        <li><a href="future.html">Future Vision</a></li>
+                        <li><a href="AI.html">Tech & AI</a></li> 
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Enhanced Password Section -->
+            <div class="password-section" id="password-section">
+                <div class="password-container">
+                    <h2>🔒 ENTER ACCESS CODE</h2>
+                    <div class="password-input-container">
+                        <input type="password" id="password-input" placeholder="••••••••••" autocomplete="off" />
+                    </div>
+                    <button id="unlock-btn" onclick="checkPassword()">AUTHENTICATE</button>
+                    <p id="error-message"></p>
+                </div>
+            </div>
+            
+            <!-- Protected content area -->
+            <div class="protected-content" id="protected-content">
+                <div class="content-row">
+	    		<div class="text-container">
+				<div class="text1">
+					<p>🎉 WOW! You actually found my blog?! 🎉 Seriously... how did you even get here? Did you crack the code like a mastermind? Or maybe get the password from a mysterious orange? 🍊✨ Either way — welcome! This is my little kingdom of chaos, curiosity, and cozy code — where a shy orange swings from a tree like she’s got zero worries in life ( just kidding, she’s my friend... and probably judging me from that branch ). 👀 </p>
+	  			</div>
+                	</div>
+		        <img src="emperor.jpg" alt="emperor.jpg" class="image1">
+	        </div>
+
+<div class="emoji-feedback">
+  <p class="emoji-question">How did the blog make you feel so far?</p>
+  <div class="emoji-buttons">
+    <button onclick="react('😍')">😍</button>
+    <button onclick="react('😂')">😂</button>
+    <button onclick="react('😮')">😮</button>
+    <button onclick="react('😢')">😢</button>
+    <button onclick="react('🤔')">🤔</button>
+  </div>
+  <p id="emoji-response" class="emoji-response"></p>
+</div>
+
+                <div class="content-row2">
+		        <img src="orange.jpg" alt="orange.jpg" class="image2">
+
+	    		<div class="text-container2">
+				<div class="text2">
+					<p>🍊 Meet my orange friend!
+She might look like a chill fruit hanging on a tree, but don’t let that fool you — she’s the most outgoing orange you’ll ever meet. Always rolling into conversations, spreading sunshine, and starting adventures before I’ve even had my morning code. If this blog had a tea party planner, it would definitely be her. 🎉🧡 Just don’t ask her to sit still — she thinks even gravity is too boring. 😆✨ </p>
+	  			</div>
+                	</div>
+	        </div>
+	<div class="subtitle">
+        <span class="subtitle-underline"></span>
+		<p>Want to see the animation again...?</p>
+	</div>
+	<div style="text-align: center; margin-top: 7%;">
+    <button onclick="launchCannon()" 
+            style="padding: 10px 20px; font-family: 'Orbitron'; border: none; border-radius: 8px; background: #facd6b; color: black; cursor: pointer; box-shadow: 0 0 10px #ffd187;">
+        🎉 Celebrate Again!
+    </button>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const correctPassword = "I-will-be-employed";
+        const contentLock = document.getElementById('content-lock');
+
+        // Show the lock line initially
+        contentLock.style.display = 'block';
+
+        window.onload = function() {
+            if (sessionStorage.getItem("blogUnlocked") === "true") {
+                unlockContent();
+            } else {
+                document.body.classList.add('locked');
+            }
+        };
+
+
+        function checkPassword() {
+            const input = document.getElementById("password-input").value;
+            const error = document.getElementById("error-message");
+
+            if (input === correctPassword) {
+                sessionStorage.setItem("blogUnlocked", "true");
+                unlockContent();
+		launchCannon();
+
+            } else {
+                error.textContent = "❌ ACCESS DENIED: Invalid credentials";
+                document.getElementById("password-input").value = "";
+                document.getElementById("password-input").focus();
+                
+                // Shake animation for wrong password
+                const passwordSection = document.getElementById('password-section');
+                passwordSection.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    passwordSection.style.animation = '';
+                }, 500);
+            }
+        }
+
+        function unlockContent() {
+            document.getElementById("password-section").style.display = "none";
+            document.getElementById("protected-content").style.display = "block";
+            contentLock.style.display = 'none';
+            document.body.classList.remove('locked');
+        }
+
+        // Allow pressing Enter to submit password
+        document.getElementById("password-input").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+        // Add shake animation for wrong password
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20%, 60% { transform: translateX(-5px); }
+                40%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+  function react(emoji) {
+    const response = document.getElementById("emoji-response");
+    response.innerHTML = `Thanks for your reaction! You chose ${emoji}`;
+  }
+
+function launchCannon() {
+    // Main golden burst (center)
+    confetti({
+        particleCount: 150,
+        spread: 100,
+        startVelocity: 45,
+        scalar: 1.2,
+        ticks: 300,
+        origin: { y: 0.6 },
+        colors: ['#FFD700', '#FFA500', '#FF8C00', '#FFDAB9', '#FFFFFF'],
+        shapes: ['circle', 'star'],
+        gravity: 0.5,
+        drift: 0.5
+    });
+
+    // Left cannon (warm tones)
+    confetti({
+        particleCount: 80,
+        angle: 60,
+        spread: 70,
+        startVelocity: 40,
+        scalar: 1.3,
+        ticks: 250,
+        origin: { x: 0, y: 0.6 },
+        colors: ['#FF8C42', '#FFA343', '#FFB865', '#FFD187'],
+        shapes: ['circle'],
+        gravity: 0.4,
+        drift: 0.3
+    });
+
+    // Right cannon (bright tones)
+    confetti({
+        particleCount: 80,
+        angle: 120,
+        spread: 70,
+        startVelocity: 40,
+        scalar: 1.3,
+        ticks: 250,
+        origin: { x: 1, y: 0.6 },
+        colors: ['#FFD700', '#FFECB3', '#FFF4C2', '#FFFFFF'],
+        shapes: ['star'],
+        gravity: 0.4,
+        drift: -0.3
+    });
+
+    // Delayed sparkle effect
+    setTimeout(() => {
+        confetti({
+            particleCount: 50,
+            spread: 360,
+            startVelocity: 30,
+            scalar: 0.8,
+            ticks: 150,
+            origin: { y: 0.5 },
+            colors: ['#FFFFFF', '#FFECB3'],
+            shapes: ['circle'],
+            gravity: 0.2
+        });
+    }, 300);
+
+    // Floating particles that linger
+    confetti({
+        particleCount: 30,
+        spread: 100,
+        startVelocity: 15,
+        scalar: 1.5,
+        ticks: 500,
+        origin: { y: 0.5 },
+        colors: ['#FFA500', '#FFD700'],
+        shapes: ['circle'],
+        gravity: 0.1,
+        drift: 0
+    });
+}
+
+    </script>
+</body>
+</html>

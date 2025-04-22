@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stay with me - in this wonderland</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500&family=Orbitron:wght@400;700&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+
+
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: url('background.gif');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0px;
+        }
+
+    .content-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start; /* Align items at the top */
+        width: 100%;
+        gap: 5%; /* Space between items */
+        margin-top: 0%; /* Adjust as needed */
+    }
+
+    .text-container {
+        width: 55%; 
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content-row2 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start; /* Align items at the top */
+        width: 100%;
+        gap: 5%; /* Space between items */
+        margin-top: 0%; /* Adjust as needed */
+    }
+
+    .text-container2 {
+        width: 40%; 
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    @media (max-width: 768px) {
+        .content-row, .content-row2 {
+            flex-direction: column;
+        }
+        .image1, .text-container, .image2, .text-container2 {
+            width: 100%;
+	    height:100%;
+        }
+    }
+
+       .image1 {
+	    margin-top:9%;
+            width: 40%;
+            height: auto;
+    	    border: none;
+            outline: 1px solid #ffb6d9;
+            outline-offset: 5px;
+            animation: pinkPulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pinkPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 8px #ff9ec6,
+                    0 0 16px #ff6bae,
+                    0 0 24px #ff3d96;
+            }
+            50% {
+                box-shadow: 
+                    0 0 12px #ff9ec6,
+                    0 0 24px #ff6bae,
+                    0 0 36px #ff3d96,
+                    0 0 4px #00f2ff; /* Subtle blue accent at peak glow */
+            }
+        }
+
+
+       .image2 {
+	    margin-top:9%;
+            width: 50%;
+            height: auto;
+    	    border: none;
+            outline: 1px solid #ffb6d9;
+            outline-offset: 5px;
+            animation: pinkPulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pinkPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 8px #ff9ec6,
+                    0 0 16px #ff6bae,
+                    0 0 24px #ff3d96;
+            }
+            50% {
+                box-shadow: 
+                    0 0 12px #ff9ec6,
+                    0 0 24px #ff6bae,
+                    0 0 36px #ff3d96,
+                    0 0 4px #00f2ff; /* Subtle blue accent at peak glow */
+            }
+        }
+
+
+	.text1 {
+	    margin-top: 16%;
+	    text-align: left;
+	    color: white;
+	    font-size: 2vh;
+            margin-right: 6.7%;
+	    position: relative;
+            padding: 1.5em;
+            font-family: 'Comfortaa', 'Quicksand', sans-serif;
+  	    line-height: 1.65;
+            font-weight: 500;
+            background-color: rgba(40, 5, 60, 0.8);
+            border-radius: 15px;
+            border: 2px solid #ff6bae; /* Pink border */
+            box-shadow: 
+                0 0 10px rgba(255, 107, 174, 0.6),
+                0 0 20px rgba(255, 107, 174, 0.3);
+            animation: bubbleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes bubbleGlow {
+            to {
+                box-shadow: 
+                    0 0 15px rgba(255, 107, 174, 0.8),
+                    0 0 30px rgba(255, 107, 174, 0.4),
+                    0 0 5px rgba(255, 255, 255, 0.2);
+                border-color: #ff85c3; /* Brighter pink at peak */
+            }
+        }
+
+        /* Speech bubble arrow */
+        .text1::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 20px solid #ff6bae;
+            filter: drop-shadow(2px 0 3px rgba(255, 107, 174, 0.6));
+            animation: arrowPulse 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes arrowPulse {
+            to {
+                border-left-color: #ff85c3;
+                filter: drop-shadow(3px 0 5px rgba(255, 107, 174, 0.8));
+            }
+        }
+
+        .text2 {
+	    margin-left:20%
+	    display: block;
+	    margin-top: 9%;
+	    text-align:center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4vh;
+            font-weight: 700;
+            letter-spacing: 2px;	
+            color: #fff; /* Original white text preserved */	
+            animation: enhancedRoseGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes text2Glow {
+            from {
+              text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.9),
+                0 0 20px rgba(255, 102, 179, 0.7),  /* #ff66b3 */
+                0 0 30px rgba(230, 0, 115, 0.6);    /* #e60073 */
+            }   
+            to {
+              text-shadow: 
+                0 0 15px rgba(255, 255, 255, 1),
+                0 0 30px rgba(255, 77, 166, 0.9),   /* #ff4da6 */
+                0 0 45px rgba(230, 0, 115, 0.7),
+                0 0 60px rgba(180, 0, 90, 0.4);     /* Deeper rose */
+             }
+        }
+	
+
+	.text3 {
+	    margin-top:20.5%;
+	    color: white;
+	    font-size: 2vh;
+            padding: 1.5em;
+            font-family: 'Comfortaa', 'Quicksand', sans-serif;
+  	    line-height: 1.65;
+            font-weight: 500;
+            background-color: rgba(40, 5, 60, 0.8); /* Deep purple base */
+            border-radius: 15px;
+            border: 2px solid #ff6bae; /* Pink border */
+            box-shadow: 
+                0 0 10px rgba(255, 107, 174, 0.6),
+                0 0 20px rgba(255, 107, 174, 0.3);
+            animation: bubbleGlow 3s ease-in-out infinite alternate;
+        }
+
+        .text4 {
+	    margin-top: 9%;
+	    text-align:center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4vh;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #fff; /* Original white text preserved */
+        animation: enhancedRoseGlow 3s ease-in-out infinite alternate;
+        }
+
+
+    .text5 {
+	    font-family: 'La Belle Aurore', cursive;
+            font-size: 2.8vh; /* Slightly reduced for better fit */
+	    color: #f8d7ff;
+	    margin-top:12mm;
+            padding: 1.7em;
+    	    border: none;
+            outline: 3px solid #ffb6d9;
+            animation: pinkPulse 3s infinite ease-in-out;
+
+        text-shadow: 
+            0 0 8px rgba(230, 200, 255, 0.5),
+            0 0 2px rgba(255, 255, 255, 0.3);
+        }
+
+
+
+        .navigation-menu {
+            width: 100%;
+            margin-top: 13mm;
+        }
+
+        #navigation ul {
+	    font-size: 2.37vh;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: #a863b0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #navigation ul li {
+            position: relative;
+            margin: 0;
+        }
+
+        #navigation ul li a {
+            font-family: monospace;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        #navigation ul li a:hover {
+            background-color:#eba7e3;
+        }
+
+        #navigation li:not(:first-child)::before {
+            content: "|";
+            color: white;
+            position: absolute;
+            left: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none; /* Makes the pipe separator non-interactive */
+        }
+
+        .title {
+	    text-align:center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.3vh;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #fff; /* Original white text preserved */
+        animation: enhancedRoseGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes enhancedRoseGlow {
+        from {
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.9),
+                0 0 20px rgba(255, 102, 179, 0.7),  /* #ff66b3 */
+                0 0 30px rgba(230, 0, 115, 0.6);    /* #e60073 */
+        }
+        to {
+            text-shadow: 
+                0 0 15px rgba(255, 255, 255, 1),
+                0 0 30px rgba(255, 77, 166, 0.9),   /* #ff4da6 */
+                0 0 45px rgba(230, 0, 115, 0.7),
+                0 0 60px rgba(180, 0, 90, 0.4);     /* Deeper rose */
+        }
+    }
+
+
+
+        
+        /* A4 container with responsive behavior */
+        .container {
+            width: 100%;
+            max-width: 230mm; /* width */
+            height: 100%;
+            padding-bottom: 110%; /* aspect ratio (253/230) */
+            position: relative;
+            background-color: black;
+            border: 13px double #f5e1ec; /* Light pink border */
+            box-shadow: 
+                0 0 15px rgba(255, 182, 193, 0.4),  /* Outer glow */
+                0 0 30px rgba(255, 105, 180, 0.3),  /* Medium glow */
+                inset 0 0 15px rgba(255, 182, 193, 0.3); /* Inner glow */
+            animation: pinkBorderGlow 4s infinite alternate;
+        }
+
+        @keyframes pinkBorderGlow {
+            0%, 100% {
+                border-color: rgba(255, 182, 193, 0.6); /* Light pink */
+                box-shadow: 
+                    0 0 15px rgba(255, 182, 193, 0.4),
+                    0 0 30px rgba(255, 105, 180, 0.3),
+                    inset 0 0 15px rgba(255, 182, 193, 0.3);
+            }
+            50% {
+                border-color: rgba(255, 192, 203, 0.8); /* Brighter pink */
+                box-shadow: 
+                    0 0 25px rgba(255, 182, 193, 0.6),
+                    0 0 50px rgba(255, 105, 180, 0.4),
+                    inset 0 0 25px rgba(255, 182, 193, 0.5);
+            }
+        }
+        
+        /* Actual content area */
+        .content {
+	    background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20mm; /* Standard margins */
+            overflow:auto; /* For content that exceeds the page */
+  	    overflow-x:auto;
+        }
+        
+        /* Print-specific styles */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            
+            .container {
+                width: 230mm;
+                height: 253mm;
+                padding-bottom: 0;
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .content {
+                position:static;
+                padding: 0;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+		<div class = "title">
+			<h1>Penguin's Wonderland</h1>
+		</div>
+		<div class="navigation-menu">
+			<div id ="navigation">
+				<ul>
+  					<li><a href="index.html">Home</a></li>
+  					<li><a href="blog.html">Blog</a></li>
+ 	        			<li><a href="space.html">Space & Beyond</a></li>
+  					<li><a href="future.html">Future Vision</a></li>
+  					<li><a href="AI.html">Tech & AI</a></li> 
+				</ul>
+			</div>
+		</div>
+
+    <div class="content-row">
+
+	<div class="text-container">
+	 	<div class="text1">
+			<p>Welcome, gentle traveler 🌙...<br></br>Oh… you’ve found this quiet little corner of the internet — how lovely. This space is a small reflection of my thoughts, dreams, and curiosity about what lies ahead, both in technology and among the stars. It’s not flashy or loud… just something I’ve built with care, bit by bit. Feel free to stay as long as you’d like - click gently, wander slowly, and maybe let your mind drift a little. I’m really glad you’re here ✨...</p>
+		</div>
+	</div>
+	       	<img src="profile4.gif" alt="Girl in a jacket" class="image1">
+   </div>
+		<div class="text2">
+		 	<p>But how is it related to penguins...?</p>
+	        </div>
+
+	<div class="content-row2">
+		<img src="Wonderland.png" alt="Penguins in the wonderland" class="image2">
+	    <div class="text-container2">
+		<div class="text3">
+			<p>Well… I’ve always liked penguins. They’re quiet little explorers of harsh, beautiful places—soft-hearted but surprisingly resilient. Kind of like how I see myself sometimes. 🐧 So when I imagined building a space that feels safe, dreamy, and full of curious thoughts, Penguin’s Wonderland just felt right.</p>
+	  	</div>
+            </div>
+	</div>
+		<div class="text4">
+			<p>So now you know the penguins...</p>
+		</div>
+		<div class="text5">
+			<marquee behavior="scroll" direction="left">So now you’ve met the penguins… why don’t you take a little stroll through this wonderland? There’s a whole world waiting — quiet, curious, and just a bit magical. ❄️🌌</marquee>
+		</div>
+
+        </div>
+    </div>
+</body>
+</html>

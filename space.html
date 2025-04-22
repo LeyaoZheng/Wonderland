@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stay with me - in this wonderland</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500&family=Orbitron:wght@400;700&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+
+
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: url('background.gif');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0px;
+        }
+
+.image1 {
+     border-radius: 15px;
+     float: left;
+     margin-top: 14mm;
+            width: 65%;
+            height: auto;
+        border: none;
+        outline: 1px solid #70c8ff; /* Medium-dark blue border */
+        outline-offset: 5px;
+        animation: deepBluePulse 3s infinite ease-in-out;
+    }
+
+
+    @keyframes deepBluePulse {
+        0%, 100% {
+            box-shadow: 
+                0 0 8px rgba(80, 180, 255, 0.8),    /* Deep sky blue */
+                0 0 16px rgba(50, 130, 230, 0.6),   /* Royal blue */
+                0 0 24px rgba(30, 80, 200, 0.4);    /* Navy blue */
+        }
+        50% {
+            box-shadow: 
+                0 0 12px rgba(100, 200, 255, 0.9),  /* Bright cobalt */
+                0 0 24px rgba(70, 150, 240, 0.7),
+                0 0 36px rgba(40, 100, 220, 0.5),
+                0 0 4px rgba(180, 230, 255, 0.3);   /* Light blue accent */
+        }
+    }
+
+
+.image2 {
+     border-radius: 5px;
+     float:right;
+     margin-top: 7.6%;
+            width: 29%;
+            height: auto;
+     float:center;
+        border: none;
+        outline: 1px solid #70c8ff; /* Medium-dark blue border */
+        outline-offset: 5px;
+        animation: deepBluePulse 3s infinite ease-in-out;
+    }
+
+
+.image3 {
+     border-radius: 15px;
+     float:center;
+     margin-top: 8mm;
+            width: 100%;
+            height: auto;
+        border: 2px dashed #6bb5ff; /* Soft blue border */
+        box-shadow: 
+            0 0 12px rgba(107, 181, 255,0.5),  /* Primary glow */
+            0 0 24px rgba(80, 150, 255,0.3);    /* Wider glow */
+        animation: blueBubbleGlow 3s ease-in-out infinite alternate;
+}
+
+    .text1 {
+        margin-top: 13mm;
+        flow: center;
+        color: white;
+        font-size: 2vh;
+        position: relative;
+        padding: 1.5em;
+        font-family: 'Comfortaa', 'Quicksand', sans-serif;
+        line-height: 1.65;
+        font-weight: 500;
+        background-color: #0e1b3d;
+        border-radius: 15px;
+        border: 2px solid #6bb5ff; /* Soft blue border */
+        box-shadow: 
+            0 0 12px rgba(107, 181, 255, 0.5),  /* Primary glow */
+            0 0 24px rgba(80, 150, 255, 0.3);    /* Wider glow */
+        animation: blueBubbleGlow 3s ease-in-out infinite alternate;
+    }
+
+    .text2 {
+	    text-align:center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.3vh;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: white;
+            text-shadow:
+                0 0 8px #00a2ff,    /* Increased blur */
+                0 0 18px #0066ff,    /* Stronger spread */
+                0 0 28px #0033cc;    /* Deeper glow */
+            animation: pulse 3s infinite ease-in-out;
+	margin-top: 61%;
+        font-size: 3vh;
+        font-family: 'Comfortaa', 'Quicksand', sans-serif;
+        line-height: 1.65;
+        font-weight: 500;
+    }
+
+
+        .navigation-menu {
+            width: 100%;
+            margin-top: 13mm;
+        }
+
+        #navigation ul {
+	    font-size: 2.37vh;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: #104191;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #navigation ul li {
+            position: relative;
+            margin: 0;
+        }
+
+        #navigation ul li a {
+            font-family: monospace;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        #navigation ul li a:hover {
+            background-color: slateblue;
+        }
+
+        #navigation li:not(:first-child)::before {
+            content: "|";
+            color: white;
+            position: absolute;
+            left: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none; /* Makes the pipe separator non-interactive */
+        }
+
+        .title {
+	    text-align:center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.3vh;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #00f2ff;
+            text-shadow:
+                0 0 8px #00a2ff,    /* Increased blur */
+                0 0 18px #0066ff,    /* Stronger spread */
+                0 0 28px #0033cc;    /* Deeper glow */
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                text-shadow:
+                    0 0 8px #00a2ff,
+                    0 0 18px #0066ff,
+                    0 0 28px #0033cc;
+            }
+            50% {
+                text-shadow:
+                    0 0 15px #00c8ff,  /* Brighter at peak */
+                    0 0 30px #0088ff,   /* Wider spread */
+                    0 0 45px #0044ff,   /* More intense */
+                    0 0 60px #0011ff;   /* Added deeper layer */
+            }
+        }
+
+
+
+        
+        /* A4 container with responsive behavior */
+        .container {
+            width: 100%;
+            max-width: 230mm; /* width */
+            height: 100%;
+            padding-bottom: 110%; /* aspect ratio (253/230) */
+            position: relative;
+            background-color: black;
+        border: 13px double rgba(140, 220, 255, 0.5); /* Brighter blue border */
+        box-shadow: 
+            inset 0 0 15px rgba(120, 210, 255, 0.3),  /* Inner glow */
+            0 0 30px rgba(100, 200, 255, 0.4),        /* Middle glow */
+            0 0 15px rgba(80, 180, 255, 0.2);         /* Outer spread */
+        
+        /* Gentle pulse animation */
+        animation: bluePulse 3s infinite alternate ease-in-out;
+    }
+
+    @keyframes bluePulse {
+        50% {
+            box-shadow: 
+                inset 0 0 15px rgba(140, 220, 255, 0.4),
+                0 0 25px rgba(120, 210, 255, 0.5),
+                0 0 50px rgba(100, 200, 255, 0.3);
+            border-color: rgba(160, 230, 255, 0.6);
+        }
+    }
+        
+        /* Actual content area */
+        .content {
+	    background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20mm; /* Standard margins */
+            overflow: auto; /* For content that exceeds the page */
+        }
+        
+        /* Print-specific styles */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            
+            .container {
+                width: 230mm;
+                height: 253mm;
+                padding-bottom: 0;
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .content {
+                position: static;
+                padding: 0;
+            }
+        }
+
+.planet-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+
+
+.planet-circle {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border: 5px solid white;
+  border-radius: 50%;
+  background-color: transparent;
+  animation: circlepulse 1.2s infinite;
+  cursor: pointer;
+}
+
+@keyframes circlepulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+
+.text-box {
+  margin-top: 8mm;
+  line-space:2mm;
+  line-height:6mm;
+  padding: 15px;
+  color: white;
+  font-family: monospace;
+       background-color: #0e1b3d;
+        border: 2px solid #6bb5ff; /* Soft blue border */
+        box-shadow: 
+            0 0 12px rgba(107, 181, 255, 0.5),  /* Primary glow */
+            0 0 24px rgba(80, 150, 255, 0.3);    /* Wider glow */
+        animation: blueBubbleGlow 3s ease-in-out infinite alternate;
+}
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+		<div class = "title">
+			<h1>Penguin's Wonderland</h1>
+		</div>
+
+		<div class="navigation-menu">
+			<div id ="navigation">
+				<ul>
+  					<li><a href="index.html">Home</a></li>
+  					<li><a href="blog.html">Blog</a></li>
+ 	        			<li><a href="space.html">Space & Beyond</a></li>
+  					<li><a href="future.html">Future Vision</a></li>
+  					<li><a href="AI.html">Tech & AI</a></li> 
+				</ul>
+			</div>
+		</div>
+
+		<div class="text1">
+			<p>✨ Have you ever stared up at the night sky and felt small in the best way? Space is full of silence, mystery, and beauty — and somehow, it feels like it’s quietly watching us too. In this part of my wonderland, I collect little things I’ve learned and felt about what’s beyond our skies.</p>
+		</div>
+
+		<img src="space4.jpg" alt="space.jpg" class="image1">
+		<img src="space5.jpg" alt="astronaut.jpg" class="image2">
+
+		<div class="text2">
+			<p>Small Game: Click on the Image Below 🌟</p>
+		</div>
+
+
+
+
+
+<div class="planet-container">
+		<img src="click2.jpg" alt="click.jpeg" class="image3">
+<div class="planet-circle" id="sun-circle" style="top: 56%; left: 6.3%;" onclick="showInfo('sun')"></div>
+<div class="planet-circle" id="venus-circle" style="top: 56%; left: 23.3%;" onclick="showInfo('venus')"></div>
+<div class="planet-circle" id="earth-circle" style="top: 56%; left: 33.3%;" onclick="showInfo('earth')"></div>
+<div class="planet-circle" id="jupiter-circle" style="top: 56%; left:46.3%;" onclick="showInfo('jupiter')"></div>
+<div class="planet-circle" id="saturn-circle" style="top: 56%; left:62.4%;" onclick="showInfo('saturn')"></div>
+<div class="planet-circle" id="neptune-circle" style="top: 56%; left:75%;" onclick="showInfo('neptune')"></div>
+<div class="planet-circle" id="pluto-circle" style="top: 56%; left:86.7%;" onclick="showInfo('pluto')"></div>
+
+
+</div>
+
+
+  <div id="description-box" class="text-box">
+    <p id="planet-description">Click on the planets to discover more!</p>
+  </div>
+
+		
+  </div>
+</div>
+
+
+  <script>
+    const descriptions = {
+     sun: "☀️ The Sun. The heart of our solar system — radiant, ancient, and endlessly giving. The Sun is a giant ball of glowing gas that lights our skies, warms our worlds, and holds everything together with its gentle gravity. Without it, there would be no days, no colors, no life… just quiet darkness. It’s more than a star — it’s home.",
+     venus:"🟡 Venus. Shrouded in golden clouds and mystery, Venus is both beautiful and fierce. Often called Earth’s twin, she hides a world of extremes beneath her glowing veil — scorching heat, toxic skies, and endless storms. But from afar, she shines the brightest in our sky, like a silent beacon of wonder and warning.",
+     earth: "🌍 The Earth Our blue marble — vibrant, delicate, and endlessly alive. Earth is the only planet we know that sings with life, wrapped in clouds and oceans, forests and fireflies. It spins gently in the dark, cradling everything we’ve ever loved, dreamed, or known. From space, it looks quiet… but down here, it’s full of stories.",
+     jupiter:"🌀 Jupiter. The giant among planets — majestic, ancient, and endlessly swirling. Jupiter is a world of storms and stripes, with a heart made of mystery and a crown of moons dancing around it. Its Great Red Spot has raged for centuries, like a cosmic eye watching the galaxy spin. Despite its size and power.",
+     saturn:"💍 Saturn. The jewel of the solar system — graceful, distant, and impossibly beautiful. Saturn is wrapped in golden rings that shimmer like a dream, each one made of ice, dust, and time. Though it drifts far from the Sun, it captivates us like no other, spinning slowly with quiet elegance.",
+     neptune:"🔵 Neptune. Mysterious and deep, Neptune is the faraway whisper of our solar system — a world of sapphire winds and secrets. Its storms roar faster than sound, yet it moves with calm elegance through the dark. Cloaked in blue, Neptune feels like the ocean of space itself: vast, unexplored, and full of quiet power.",
+    pluto:"🧊 Pluto. Once a planet, always a wonder. Pluto is small, distant, and full of quiet magic. It drifts on the edge of everything, like a forgotten dream still glowing in the dark. With icy mountains and a heart-shaped plain, it feels almost alive — as if it's watching us too."
+    };
+
+    function showInfo(planet) {
+      document.getElementById("planet-description").textContent = descriptions[planet];
+const circle = document.getElementById(`${planet}-circle`);
+circle.style.border = "none";
+circle.style.animation = "none";
+circle.style.cursor = "pointer";
+    }
+  </script>
+
+
+</body>
+</html>
